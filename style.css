@@ -1,0 +1,135 @@
+:root {
+  --dkgk-gold: #f5d27a;
+  --dkgk-gold-2: #e9c35c;
+  --dkgk-dark-bg: #0b0b12;
+  --dkgk-light-bg: #f8f9fb;
+  --dkgk-dark-text: #f4f4f8;
+  --dkgk-light-text: #1a1a22;
+
+  /* mặc định; sẽ bị JS ghi đè bằng link Pinterest */
+  --bg-dark: url("https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?q=80&w=1920&auto=format&fit=crop");
+  --bg-light: url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1920&auto=format&fit=crop");
+}
+
+/* Global theme colors */
+html[data-bs-theme="dark"] body {
+  background: var(--dkgk-dark-bg);
+  color: var(--dkgk-dark-text);
+}
+html[data-bs-theme="light"] body {
+  background: var(--dkgk-light-bg);
+  color: var(--dkgk-light-text);
+}
+
+/* Fullscreen background (swapped by theme) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+html[data-bs-theme="dark"] body::before {
+  background-image: var(--bg-dark);
+  filter: brightness(0.55) saturate(1.1);
+}
+html[data-bs-theme="light"] body::before {
+  background-image: var(--bg-light);
+  filter: brightness(0.9);
+}
+
+/* Overlay for readability */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+html[data-bs-theme="dark"] body::after {
+  background: radial-gradient(
+    ellipse at 50% 20%,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.55)
+  );
+}
+html[data-bs-theme="light"] body::after {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.75),
+    rgba(255, 255, 255, 0.35)
+  );
+}
+
+/* Navbar transition */
+.navbar {
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Buttons */
+.btn-warning {
+  background: var(--dkgk-gold);
+  border-color: var(--dkgk-gold);
+  color: #2a1f00;
+}
+.btn-warning:hover {
+  background: var(--dkgk-gold-2);
+  border-color: var(--dkgk-gold-2);
+}
+
+/* Cards adapt to theme */
+.card {
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+html[data-bs-theme="dark"] .card {
+  background: linear-gradient(180deg, #111120, #0c0c18);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+html[data-bs-theme="light"] .card {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+/* Service images */
+.service-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* Hero spacing */
+.hero-spacer {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+/* Links color tuning by theme */
+html[data-bs-theme="dark"] a {
+  color: var(--dkgk-gold);
+}
+html[data-bs-theme="dark"] a:hover {
+  color: var(--dkgk-gold-2);
+}
+html[data-bs-theme="light"] a {
+  color: #7a5cff;
+}
+html[data-bs-theme="light"] a:hover {
+  color: #5a45d6;
+}
+
+/* Tone correction for light theme */
+html[data-bs-theme="light"] .text-white-50 {
+  color: #6b7280 !important;
+}
+
+/* Footer alignment with theme */
+html[data-bs-theme="light"] footer.bg-dark {
+  background: #111827 !important;
+  color: #e5e7eb;
+}
+
+/* Back-to-top button shadow */
+#btnBackTop {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
