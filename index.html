@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>DKGK — Dịch vụ Huyền học (Tarot • Tử vi • Phong thủy)</title>
+    <title>DKGK — Dịch vụ Huyền học</title>
 
-    <!-- Bootstrap & Icons CDN -->
+    <!-- Bootstrap & Icons -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -15,8 +15,125 @@
       rel="stylesheet"
     />
 
-    <!-- Custom CSS -->
-    <link href="./style.css" rel="stylesheet" />
+    <style>
+      :root {
+        --dkgk-gold: #f5d27a;
+        --dkgk-gold-2: #e9c35c;
+        --dkgk-dark-bg: #0b0b12;
+        --dkgk-light-bg: #f8f9fb;
+        --dkgk-dark-text: #f4f4f8;
+        --dkgk-light-text: #1a1a22;
+        --bg-dark: url("https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?q=80&w=1920&auto=format&fit=crop");
+        --bg-light: url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1920&auto=format&fit=crop");
+        --hero-dark: url("https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=1920&auto=format&fit=crop");
+        --hero-light: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1920&auto=format&fit=crop");
+      }
+
+      html[data-bs-theme="dark"] body {
+        background: var(--dkgk-dark-bg);
+        color: var(--dkgk-dark-text);
+      }
+      html[data-bs-theme="light"] body {
+        background: var(--dkgk-light-bg);
+        color: var(--dkgk-light-text);
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      html[data-bs-theme="dark"] body::before {
+        background-image: var(--bg-dark);
+      }
+      html[data-bs-theme="light"] body::before {
+        background-image: var(--bg-light);
+      }
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+      }
+      html[data-bs-theme="dark"] body::after {
+        background: rgba(0, 0, 0, 0.55);
+      }
+      html[data-bs-theme="light"] body::after {
+        background: rgba(255, 255, 255, 0.35);
+      }
+
+      .hero-banner {
+        position: relative;
+        padding: 5rem 0;
+        text-align: center;
+        color: #fff;
+        background-position: center;
+        background-size: cover;
+      }
+      html[data-bs-theme="dark"] .hero-banner {
+        background-image: var(--hero-dark);
+      }
+      html[data-bs-theme="light"] .hero-banner {
+        background-image: var(--hero-light);
+      }
+      .hero-banner::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.55);
+        z-index: 0;
+      }
+      .hero-banner .container {
+        position: relative;
+        z-index: 1;
+      }
+
+      .btn-nav {
+        min-width: 110px;
+        padding: 0.5rem 0.75rem;
+      }
+      .btn-warning {
+        background: var(--dkgk-gold);
+        border-color: var(--dkgk-gold);
+        color: #2a1f00;
+      }
+      .btn-warning:hover {
+        background: var(--dkgk-gold-2);
+        border-color: var(--dkgk-gold-2);
+      }
+      html[data-bs-theme="light"] .btn-outline-light {
+        color: #111827;
+        border-color: rgba(0, 0, 0, 0.25);
+      }
+      html[data-bs-theme="light"] .btn-outline-light:hover {
+        background: #111827;
+        color: #fff;
+      }
+
+      .card {
+        border: 1px solid rgba(0, 0, 0, 0.06);
+      }
+      html[data-bs-theme="dark"] .card {
+        background: linear-gradient(180deg, #111120, #0c0c18);
+        border-color: rgba(255, 255, 255, 0.06);
+      }
+      html[data-bs-theme="light"] .card {
+        background: #fff;
+      }
+
+      .service-img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+      }
+
+      #btnBackTop {
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+      }
+    </style>
   </head>
   <body>
     <!-- NAVBAR -->
@@ -29,9 +146,8 @@
       >
         <a href="#" class="navbar-brand d-flex align-items-center gap-2">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Star_icon-72a7cf.svg"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Five-pointed_star.svg/48px-Five-pointed_star.svg.png"
             alt="DKGK logo"
-            class="img-fluid rounded-3"
             style="height: 44px; width: auto"
           />
           <span class="fw-bold d-none d-sm-inline">DKGK Huyền học</span>
@@ -41,9 +157,6 @@
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#mainNav"
-          aria-controls="mainNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -59,9 +172,6 @@
               <a class="nav-link" href="#pricing">Gói</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#booking">Đặt lịch</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="#contact">Liên hệ</a>
             </li>
           </ul>
@@ -70,20 +180,20 @@
           >
             <button
               id="toggleTheme"
-              class="btn btn-outline-light w-100 w-md-auto"
-              aria-label="Đổi giao diện"
+              class="btn btn-outline-light btn-nav"
+              type="button"
             >
               <i class="bi bi-brightness-high"></i>
             </button>
             <button
-              class="btn btn-outline-light w-100 w-md-auto"
+              class="btn btn-outline-light btn-nav"
               data-bs-toggle="modal"
               data-bs-target="#loginModal"
             >
               Đăng nhập
             </button>
             <button
-              class="btn btn-warning w-100 w-md-auto"
+              class="btn btn-warning btn-nav"
               data-bs-toggle="modal"
               data-bs-target="#registerModal"
             >
@@ -95,105 +205,68 @@
     </header>
 
     <!-- HERO -->
-    <section class="py-5 text-center bg-dark text-white hero-spacer">
+    <section class="hero-banner text-white text-center">
       <div class="container py-5">
         <h1 class="display-5 fw-bold">Tarot • Tử vi • Phong thủy</h1>
         <p class="lead text-secondary mb-4">
           Khai mở tri thức huyền học, định hướng tình duyên • sự nghiệp • tài
           lộc
         </p>
-        <div class="d-flex gap-2 flex-wrap justify-content-center mb-4">
-          <span class="badge rounded-pill text-bg-secondary"
-            ><i class="bi bi-stars me-1"></i>Reader 5+ năm</span
-          >
-          <span class="badge rounded-pill text-bg-secondary"
-            ><i class="bi bi-camera-video me-1"></i>Online/Offline</span
-          >
-          <span class="badge rounded-pill text-bg-secondary"
-            ><i class="bi bi-shield-check me-1"></i>Bảo mật</span
-          >
-        </div>
         <button
-          class="btn btn-warning me-2"
+          class="btn btn-warning btn-nav me-2"
           data-bs-toggle="modal"
           data-bs-target="#bookingModal"
         >
           Đặt lịch ngay
         </button>
-        <a href="#services" class="btn btn-outline-light">Xem dịch vụ</a>
+        <a href="#services" class="btn btn-outline-light btn-nav"
+          >Xem dịch vụ</a
+        >
       </div>
     </section>
 
     <!-- SERVICES -->
     <section id="services" class="container py-5">
-      <h2 class="section-title text-center mb-2 fw-bold">Dịch vụ nổi bật</h2>
-      <p class="text-secondary text-center mb-4">
-        Tư vấn 1:1 theo nhu cầu — tình cảm, công việc, tài chính, phong thủy
-      </p>
+      <h2 class="text-center mb-4 fw-bold">Dịch vụ nổi bật</h2>
       <div class="row g-4">
         <div class="col-md-6 col-lg-3">
           <div class="card h-100 p-4 text-center">
             <img
-              data-role="pinterest"
-              data-key="tarot"
               src="https://images.unsplash.com/photo-1604881987305-cdf918f2c26f?q=80&w=800&auto=format&fit=crop"
-              alt="Tarot"
-              class="img-fluid rounded mb-3 service-img"
+              class="service-img mb-3"
+              alt="Tarot chuyên sâu"
             />
-            <h6 class="text-uppercase text-muted mb-1">Tarot</h6>
-            <h5 class="mb-2">Tarot chuyên sâu</h5>
-            <p class="small text-white-50">
-              Trải bài theo mục tiêu, lộ trình 3–6 tháng, file note sau buổi
-              đọc.
-            </p>
+            <h5>Tarot chuyên sâu</h5>
           </div>
         </div>
         <div class="col-md-6 col-lg-3">
           <div class="card h-100 p-4 text-center">
             <img
-              data-role="pinterest"
-              data-key="zodiac"
-              src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=800&auto=format&fit=crop"
-              alt="Tử vi"
-              class="img-fluid rounded mb-3 service-img"
+              src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Zodiac-symbols-wheel.svg"
+              class="service-img mb-3"
+              alt="Tử vi trọn đời"
             />
-            <h6 class="text-uppercase text-muted mb-1">Tử vi</h6>
-            <h5 class="mb-2">Tử vi trọn đời</h5>
-            <p class="small text-white-50">
-              Phân tích cung mệnh, đại vận, hạn năm; gợi ý việc–học–tài.
-            </p>
+            <h5>Tử vi trọn đời</h5>
           </div>
         </div>
         <div class="col-md-6 col-lg-3">
           <div class="card h-100 p-4 text-center">
             <img
-              data-role="pinterest"
-              data-key="fengshui"
-              src="https://images.unsplash.com/photo-1552196563-55cd4e45efb3?q=80&w=800&auto=format&fit=crop"
-              alt="Phong thủy"
-              class="img-fluid rounded mb-3 service-img"
+              src="https://upload.wikimedia.org/wikipedia/commons/1/16/Bagua-name-locations-trigrams.svg"
+              class="service-img mb-3"
+              alt="Phong thủy nhà ở"
             />
-            <h6 class="text-uppercase text-muted mb-1">Phong thủy</h6>
-            <h5 class="mb-2">Phong thủy nhà ở</h5>
-            <p class="small text-white-50">
-              Bố trí hướng, màu, vật khí theo mệnh — tối ưu năng lượng.
-            </p>
+            <h5>Phong thủy nhà ở</h5>
           </div>
         </div>
         <div class="col-md-6 col-lg-3">
           <div class="card h-100 p-4 text-center">
             <img
-              data-role="pinterest"
-              data-key="natal"
-              src="https://images.unsplash.com/photo-1517816743773-6e0fd518b4a6?q=80&w=800&auto=format&fit=crop"
-              alt="Lá số"
-              class="img-fluid rounded mb-3 service-img"
+              src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Astrological_chart-wheel.svg"
+              class="service-img mb-3"
+              alt="Lá số nhanh 24h"
             />
-            <h6 class="text-uppercase text-muted mb-1">Lá số</h6>
-            <h5 class="mb-2">Lá số nhanh 24h</h5>
-            <p class="small text-white-50">
-              Kết quả PDF tóm tắt + checklist hành động theo từng mảng.
-            </p>
+            <h5>Lá số nhanh 24h</h5>
           </div>
         </div>
       </div>
@@ -202,23 +275,13 @@
     <!-- PRICING -->
     <section id="pricing" class="py-5">
       <div class="container">
-        <h2 class="section-title text-center mb-2 fw-bold">Gói dịch vụ</h2>
-        <p class="text-secondary text-center mb-4">
-          Chọn gói phù hợp — có thể nâng cấp sau
-        </p>
+        <h2 class="text-center mb-4 fw-bold">Gói dịch vụ</h2>
         <div class="row g-4">
-          <div class="col-md-6 col-lg-4">
-            <div class="card h-100 p-4">
-              <h5 class="mb-1">Starter</h5>
-              <p class="small text-white-50 mb-3">Tarot 1 vấn đề • 30 phút</p>
-              <div class="h3 fw-bold mb-3">299.000đ</div>
-              <ul class="small text-white-50 mb-4">
-                <li>01 phiên video/voice</li>
-                <li>Ảnh trải bài + ghi chú</li>
-                <li>Hỏi follow-up 24h</li>
-              </ul>
+          <div class="col-md-4">
+            <div class="card h-100 p-4 text-center">
+              <h5>Starter</h5>
               <button
-                class="btn btn-warning w-100"
+                class="btn btn-warning w-100 btn-nav"
                 data-bs-toggle="modal"
                 data-bs-target="#bookingModal"
                 data-package="Starter"
@@ -227,23 +290,11 @@
               </button>
             </div>
           </div>
-          <div class="col-md-6 col-lg-4">
-            <div class="card h-100 p-4 border border-warning">
-              <div class="d-flex align-items-center justify-content-between">
-                <h5 class="mb-1">Pro</h5>
-                <span class="badge text-bg-warning text-dark">Phổ biến</span>
-              </div>
-              <p class="small text-white-50 mb-3">
-                Tarot + Định hướng 3 tháng • 60 phút
-              </p>
-              <div class="h3 fw-bold mb-3">599.000đ</div>
-              <ul class="small text-white-50 mb-4">
-                <li>01 phiên video</li>
-                <li>File PDF tóm tắt & hành động</li>
-                <li>Support 7 ngày qua chat</li>
-              </ul>
+          <div class="col-md-4">
+            <div class="card h-100 p-4 text-center border border-warning">
+              <h5>Pro</h5>
               <button
-                class="btn btn-warning w-100"
+                class="btn btn-warning w-100 btn-nav"
                 data-bs-toggle="modal"
                 data-bs-target="#bookingModal"
                 data-package="Pro"
@@ -252,20 +303,11 @@
               </button>
             </div>
           </div>
-          <div class="col-md-6 col-lg-4">
-            <div class="card h-100 p-4">
-              <h5 class="mb-1">Master</h5>
-              <p class="small text-white-50 mb-3">
-                Tử vi + Phong thủy • Lộ trình 6 tháng
-              </p>
-              <div class="h3 fw-bold mb-3">1.490.000đ</div>
-              <ul class="small text-white-50 mb-4">
-                <li>02 phiên 60’ + 01 follow-up</li>
-                <li>Bản đồ màu sắc/vật khí theo mệnh</li>
-                <li>Support 30 ngày</li>
-              </ul>
+          <div class="col-md-4">
+            <div class="card h-100 p-4 text-center">
+              <h5>Master</h5>
               <button
-                class="btn btn-warning w-100"
+                class="btn btn-warning w-100 btn-nav"
                 data-bs-toggle="modal"
                 data-bs-target="#bookingModal"
                 data-package="Master"
@@ -280,16 +322,15 @@
 
     <!-- CONTACT -->
     <section id="contact" class="container py-5">
-      <h2 class="section-title text-center mb-4 fw-bold">Liên hệ</h2>
+      <h2 class="text-center mb-4 fw-bold">Liên hệ</h2>
       <div class="row g-4">
         <div class="col-lg-6">
-          <form class="row g-3" id="contactForm">
+          <form class="row g-3">
             <div class="col-md-6">
               <input
                 type="text"
                 class="form-control"
                 placeholder="Họ tên"
-                name="name"
                 required
               />
             </div>
@@ -298,7 +339,6 @@
                 type="email"
                 class="form-control"
                 placeholder="Email"
-                name="email"
                 required
               />
             </div>
@@ -307,41 +347,24 @@
                 class="form-control"
                 rows="4"
                 placeholder="Nội dung..."
-                name="message"
                 required
               ></textarea>
             </div>
             <div class="col-12">
-              <!-- reCAPTCHA -->
-              <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div>
-            </div>
-            <div class="col-12 d-flex gap-2">
-              <button class="btn btn-warning" type="submit">Gửi liên hệ</button>
-              <a
-                class="btn btn-outline-light"
-                href="https://zalo.me/0799958589"
-                target="_blank"
-                rel="noopener"
-                >Zalo OA</a
-              >
+              <button class="btn btn-warning btn-nav" type="submit">
+                Gửi liên hệ
+              </button>
             </div>
           </form>
         </div>
         <div class="col-lg-6">
-          <div
-            class="p-4 border rounded-3 h-100"
-            style="border-color: rgba(255, 255, 255, 0.08) !important"
-          >
-            <h5>Thông tin</h5>
-            <ul class="list-unstyled mb-0">
-              <li class="mb-2">
-                <i class="bi bi-geo-alt me-2"></i>Hà Nội, Việt Nam
-              </li>
-              <li class="mb-2">
-                <i class="bi bi-envelope me-2"></i>hello@dokhacgiakhoa.vn
-              </li>
-              <li><i class="bi bi-telephone me-2"></i>0799 958 589</li>
-            </ul>
+          <div class="ratio ratio-16x9">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.8692428270374!2d105.7469239!3d21.0379173!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31345560786f4e6b%3A0xfef43faa46645491!2zVmnhu4duIMSQw6BvIHThuqFvIFF14buRYyB04bq_IEZQVCAtIEZQVCBBY2FkZW15IEludGVybmF0aW9uYWw!5e0!3m2!1svi!2s!4v1758860405029!5m2!1svi!2s"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+            ></iframe>
           </div>
         </div>
       </div>
@@ -349,16 +372,7 @@
 
     <!-- FOOTER -->
     <footer class="bg-dark text-white text-center py-4 mt-4">
-      <div class="container">
-        <div class="mb-2">
-          <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
-          <a href="#" class="text-white me-3"
-            ><i class="bi bi-instagram"></i
-          ></a>
-          <a href="#" class="text-white"><i class="bi bi-youtube"></i></a>
-        </div>
-        <small>© 2025 DKGK. All rights reserved.</small>
-      </div>
+      <div class="container">© 2025 DKGK. All rights reserved.</div>
     </footer>
 
     <!-- Back to top -->
@@ -366,301 +380,132 @@
       type="button"
       class="btn btn-warning position-fixed bottom-0 end-0 m-4 d-none"
       id="btnBackTop"
-      aria-label="Lên đầu trang"
     >
       <i class="bi bi-arrow-up"></i>
     </button>
 
-    <!-- Modals -->
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+    <!-- MODALS -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Đăng nhập</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
+            <button class="btn-close" data-bs-dismiss="modal"></button>
           </div>
           <div class="modal-body">
-            <form id="loginForm">
-              <div class="mb-3">
-                <label class="form-label">Email</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  placeholder="you@example.com"
-                  required
-                />
-              </div>
-              <div class="mb-3">
-                <label class="form-label">Mật khẩu</label>
-                <input
-                  type="password"
-                  class="form-control"
-                  placeholder="••••••••"
-                  required
-                />
-              </div>
-              <button type="submit" class="btn btn-warning w-100">
-                Đăng nhập
-              </button>
+            <form>
+              <input
+                type="email"
+                class="form-control mb-2"
+                placeholder="Email"
+                required
+              /><input
+                type="password"
+                class="form-control mb-2"
+                placeholder="Mật khẩu"
+                required
+              /><button class="btn btn-warning w-100">Đăng nhập</button>
             </form>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="modal fade" id="registerModal" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="registerModal" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Đăng ký</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
+            <button class="btn-close" data-bs-dismiss="modal"></button>
           </div>
           <div class="modal-body">
-            <form id="registerForm">
-              <div class="mb-3">
-                <label class="form-label">Email</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  placeholder="you@example.com"
-                  required
-                />
-              </div>
-              <div class="mb-3">
-                <label class="form-label">Mật khẩu</label>
-                <input
-                  type="password"
-                  class="form-control"
-                  placeholder="Tối thiểu 8 ký tự"
-                  required
-                />
-              </div>
-              <div class="mb-3">
-                <label class="form-label">Xác nhận mật khẩu</label>
-                <input
-                  type="password"
-                  class="form-control"
-                  placeholder="Nhập lại mật khẩu"
-                  required
-                />
-              </div>
-              <div class="mb-3">
-                <!-- reCAPTCHA -->
-                <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div>
-              </div>
-              <button type="submit" class="btn btn-warning w-100">
-                Tạo tài khoản
-              </button>
+            <form>
+              <input
+                type="email"
+                class="form-control mb-2"
+                placeholder="Email"
+                required
+              /><input
+                type="password"
+                class="form-control mb-2"
+                placeholder="Mật khẩu"
+                required
+              /><input
+                type="password"
+                class="form-control mb-2"
+                placeholder="Nhập lại mật khẩu"
+                required
+              /><button class="btn btn-warning w-100">Tạo tài khoản</button>
             </form>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="modal fade" id="bookingModal" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="bookingModal" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Đặt lịch tư vấn</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
+            <h5 class="modal-title">Đặt lịch</h5>
+            <button class="btn-close" data-bs-dismiss="modal"></button>
           </div>
           <div class="modal-body">
-            <form id="bookingForm">
-              <div class="mb-3">
-                <label class="form-label">Gói</label>
-                <select
-                  class="form-select"
-                  name="package"
-                  id="bookingPackage"
-                  required
-                >
-                  <option value="Starter">Starter — 299k</option>
-                  <option value="Pro">Pro — 599k</option>
-                  <option value="Master">Master — 1.49m</option>
-                </select>
-              </div>
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label class="form-label">Ngày</label>
-                  <input
-                    type="date"
-                    class="form-control"
-                    name="date"
-                    required
-                  />
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label">Giờ</label>
-                  <input
-                    type="time"
-                    class="form-control"
-                    name="time"
-                    required
-                  />
-                </div>
-              </div>
-              <div class="row g-3 mt-0">
-                <div class="col-md-6">
-                  <label class="form-label">Họ tên</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    name="name"
-                    required
-                  />
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label">Liên hệ</label>
-                  <input
-                    type="tel"
-                    class="form-control"
-                    name="phone"
-                    placeholder="Zalo/Phone"
-                    required
-                  />
-                </div>
-              </div>
-              <div class="mb-3">
-                <label class="form-label">Hình thức</label>
-                <select class="form-select" name="mode" required>
-                  <option>Online (Zoom/Zalo/Meet)</option>
-                  <option>Offline (HN)</option>
-                </select>
-              </div>
-              <button type="submit" class="btn btn-warning w-100">
-                Xác nhận đặt lịch
-              </button>
+            <form>
+              <select class="form-select mb-2" id="bookingPackage">
+                <option>Starter</option>
+                <option>Pro</option>
+                <option>Master</option>
+              </select>
+              <input type="date" class="form-control mb-2" required />
+              <input type="time" class="form-control mb-2" required />
+              <input
+                type="text"
+                class="form-control mb-2"
+                placeholder="Họ tên"
+                required
+              />
+              <input
+                type="tel"
+                class="form-control mb-2"
+                placeholder="SĐT/Zalo"
+                required
+              />
+              <button class="btn btn-warning w-100">Xác nhận</button>
             </form>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Bootstrap + reCAPTCHA -->
+    <!-- Bootstrap bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
     <script>
-      // ====== THEME TOGGLE ======
-      const toggleBtn = document.getElementById("toggleTheme");
-      toggleBtn.addEventListener("click", () => {
+      // Theme toggle
+      document.getElementById("toggleTheme").addEventListener("click", () => {
         const html = document.documentElement;
         if (html.getAttribute("data-bs-theme") === "dark") {
           html.setAttribute("data-bs-theme", "light");
-          toggleBtn.innerHTML = '<i class="bi bi-moon"></i>';
         } else {
           html.setAttribute("data-bs-theme", "dark");
-          toggleBtn.innerHTML = '<i class="bi bi-brightness-high"></i>';
         }
       });
 
-      // ====== NAVBAR + BACK TO TOP ======
-      window.addEventListener("scroll", function () {
-        const nav = document.querySelector(".navbar");
-        if (window.scrollY > 50) {
-          nav.classList.add("bg-dark", "shadow");
-        } else {
-          nav.classList.remove("bg-dark", "shadow");
-        }
-      });
-      const btn = document.getElementById("btnBackTop");
+      // Back-to-top
+      const btnTop = document.getElementById("btnBackTop");
       window.addEventListener("scroll", () => {
-        if (window.scrollY > 300) btn?.classList.remove("d-none");
-        else btn?.classList.add("d-none");
+        if (window.scrollY > 300) btnTop.classList.remove("d-none");
+        else btnTop.classList.add("d-none");
       });
-      btn?.addEventListener("click", () =>
+      btnTop.addEventListener("click", () =>
         window.scrollTo({ top: 0, behavior: "smooth" })
       );
 
-      // ====== PRICING -> PREFILL BOOKING ======
+      // Prefill package
       const bookingModal = document.getElementById("bookingModal");
-      bookingModal?.addEventListener("show.bs.modal", function (event) {
-        const button = event.relatedTarget;
-        const pkg = button?.getAttribute("data-package");
+      bookingModal.addEventListener("show.bs.modal", (ev) => {
+        const pkg = ev.relatedTarget?.getAttribute("data-package");
         if (pkg) document.getElementById("bookingPackage").value = pkg;
       });
-
-      // ====== reCAPTCHA client-side check ======
-      function ensureCaptcha(form) {
-        try {
-          if (typeof grecaptcha !== "undefined") {
-            const widgets = form.querySelectorAll(".g-recaptcha");
-            if (widgets.length) {
-              const resp = grecaptcha.getResponse();
-              if (!resp || resp.length === 0) {
-                alert("Vui lòng xác nhận reCAPTCHA.");
-                return false;
-              }
-            }
-          }
-        } catch (e) {}
-        return true;
-      }
-      document
-        .getElementById("contactForm")
-        ?.addEventListener("submit", function (e) {
-          if (!ensureCaptcha(this)) {
-            e.preventDefault();
-          }
-        });
-      document
-        .getElementById("registerForm")
-        ?.addEventListener("submit", function (e) {
-          if (!ensureCaptcha(this)) {
-            e.preventDefault();
-          }
-        });
-
-      // ====== Pinterest images with fallback ======
-      const PINS = {
-        // Hãy thay các URL dưới bằng link thật từ i.pinimg.com để dùng ảnh Pinterest
-        background_dark:
-          "https://i.pinimg.com/originals/1b/4a/1d/1b4a1d9b6b3f6b8a1a6b63f1f3d9e4c7.jpg",
-        background_light:
-          "https://i.pinimg.com/originals/6e/2d/3d/6e2d3d4f8a2b1c9f7e0d1a2b3c4d5e6f.jpg",
-        tarot:
-          "https://i.pinimg.com/564x/41/5d/5e/415d5ea78a3cb2b2b90f639e0e73eddd.jpg",
-        zodiac:
-          "https://i.pinimg.com/564x/5a/8c/0f/5a8c0f2a3d62c1b9f6258e1a8f7d6b8b.jpg",
-        fengshui:
-          "https://i.pinimg.com/564x/76/2e/67/762e6721b7c21b3f0a9c9d7d3ef3a2d9.jpg",
-        natal:
-          "https://i.pinimg.com/564x/4e/5b/41/4e5b41e3e1a1b2c3d4e5f6a7b8c9d0e1.jpg",
-      };
-      // Swap service images
-      document.querySelectorAll('img[data-role="pinterest"]').forEach((img) => {
-        const key = img.getAttribute("data-key");
-        const url = PINS[key];
-        if (!url) return;
-        const test = new Image();
-        test.onload = () => (img.src = url);
-        test.onerror = () => {}; // giữ fallback Unsplash
-        test.src = url;
-      });
-      // Swap background via CSS variables
-      document.documentElement.style.setProperty(
-        "--bg-dark",
-        `url('${PINS.background_dark}')`
-      );
-      document.documentElement.style.setProperty(
-        "--bg-light",
-        `url('${PINS.background_light}')`
-      );
     </script>
   </body>
 </html>
