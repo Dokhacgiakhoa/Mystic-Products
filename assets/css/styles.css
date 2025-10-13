@@ -325,3 +325,37 @@ footer a {
 footer a:hover {
   color: #ffde8c;
 }
+
+/* ===== SEARCH & FILTER BAR (PRODUCTS) ===== */
+.filter-bar {
+  background-color: #1a142b;
+  border: 1px solid #322a4a;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.search-input,
+#categoryFilter,
+#minPrice,
+#maxPrice,
+#sortBy {
+  background: #241b3a; /* tím đậm */
+  color: #f8f8f8;
+  border: 1px solid #f0c674; /* viền vàng Mystic */
+}
+
+.search-input::placeholder {
+  color: #d3c9ff;
+  opacity: 0.9;
+}
+
+.search-input:focus,
+#categoryFilter:focus,
+#minPrice:focus,
+#maxPrice:focus,
+#sortBy:focus {
+  outline: none;
+  box-shadow: 0 0 6px #f0c674;
+  border-color: #f0c674;
+}
