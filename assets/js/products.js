@@ -12,7 +12,7 @@ const products = [
   // ĐÁ NĂNG LƯỢNG (1–6)
   {
     name: "Thạch Anh Trắng Tinh Khiết",
-    img: "https://images.pexels.com/photos/104123/pexels-photo-104123.jpeg?auto=compress&cs=tinysrgb&w=800",
+    img: "https://png.pngtree.com/thumb_back/fh260/background/20231023/pngtree-captivating-druse-mesmerizing-background-texture-of-untreated-amethyst-crystals-image_13698543.png",
     desc: "Thanh lọc năng lượng, khơi mở trực giác.",
     price: "320.000₫",
     priceValue: 320000,
@@ -20,7 +20,7 @@ const products = [
   },
   {
     name: "Thạch Anh Tím Amethyst",
-    img: "https://cdn.pixabay.com/photo/2024/01/23/10/26/ai-generated-8527081_1280.jpg",
+    img: "https://www.tierra.vn/wp-content/uploads/2024/09/dac-tinh-thach-anh-trang-1024x680.webp",
     desc: "Bình an, ngủ sâu, cân bằng cảm xúc.",
     price: "380.000₫",
     priceValue: 380000,
